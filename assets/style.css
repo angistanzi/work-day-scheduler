@@ -40,7 +40,9 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding: 20px;
 }
+
 
 .past {
   background-color: #d3d3d3;
