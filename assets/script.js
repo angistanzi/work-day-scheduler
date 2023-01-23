@@ -1,4 +1,4 @@
-$("textarea").val(localStorage.getItem("9a"));
+$("textarea").val(localStorage.getItem("9"));
 //Set current date and time 
 setInterval(
 
@@ -11,9 +11,20 @@ setInterval(
 $("button").on("click", function(){
    
 let $taskEntered = $("textarea").val()
-localStorage.setItem("9a", $taskEntered);
+localStorage.setItem("9", $taskEntered);
 
 });
 
 
+let $timeBlock = $("p.data-time")
+if ($timeBlock < moment().format("h")){
 
+    $("textarea").addClass("future")
+
+}else if ($timeBlock > moment().format("h")){
+
+    $("textarea").addClass("past")
+
+}else{
+    $("textarea").addClass("present")
+}
