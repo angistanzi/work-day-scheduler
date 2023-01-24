@@ -1,4 +1,4 @@
-$("textarea").val(localStorage.getItem("9"));
+// $("textarea").val(localStorage.getItem("9"));
 //Set current date and time 
 setInterval(
 
@@ -8,23 +8,44 @@ setInterval(
 },1000);
 
 
-$("button").on("click", function(){
-   
+$("button").on("click", function(e){
+console.log($(e))
 let $taskEntered = $("textarea").val()
 localStorage.setItem("9", $taskEntered);
 
 });
 
+// let timeBlockArray = [];
 
-let $timeBlock = $("p.data-time")
-if ($timeBlock < moment().format("h")){
+// $("textarea").each(function(){
 
-    $("textarea").addClass("future")
+//     timeBlockArray.push($(this).attr("data-time"));
+    
 
-}else if ($timeBlock > moment().format("h")){
+// }
+// );
+// console.log(timeBlockArray)
 
-    $("textarea").addClass("past")
+
+//Setting time block colors based on current time
+let $timeBlock = $(".time-block")
+//$(".time-block").each(function(){
+//$timeBlock.forEach(element => {
+for(i=0; i<$timeBlock.length; i++) {  
+    let localStorageReference = $($timeBlock[i]).attr("data-time") 
+    $($timeBlock[i]).val(localStorage.getItem(localStorageReference))
+if (parseInt($($timeBlock[i]).attr("data-time")) < parseInt(moment().format("HH"))){
+
+    $($timeBlock[i]).addClass("past")
+
+}else if (parseInt($($timeBlock[i]).attr("data-time")) > parseInt(moment().format("HH"))){
+
+    $($timeBlock[i]).addClass("future")
 
 }else{
-    $("textarea").addClass("present")
+
+    $($timeBlock[i]).addClass("present")
+
 }
+};
+
