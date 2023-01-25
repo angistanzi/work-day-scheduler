@@ -10,14 +10,13 @@ setInterval(
 
 
 
-
-
-$("button").on("click", function(e){
-let $taskEntered = $("textarea").val()
-console.log($(e))
-localStorage.setItem("09", $taskEntered);
-});
-
+//Setting local storage to save the textarea values upon clicking the relative button
+$(".saveBtn").on("click", function(){   
+    let $timeBlock = $(this).siblings(".time-block")
+    console.log($timeBlock.val())
+    let localStorageReference = $timeBlock.attr("data-time")
+    localStorage.setItem(localStorageReference, $timeBlock.val())
+})
 
 
 //Setting time block colors based on current time
